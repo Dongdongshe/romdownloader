@@ -1,5 +1,10 @@
 import json
 import urllib2
+import os
+
+a=os.getcwd()+'/roms'
+if not os.path.exists(a):
+    os.makedirs(a)
 
 with open('roms.json') as data_file:    
     data = json.load(data_file)
@@ -10,6 +15,7 @@ for i in range(len(data)):
         
     url=data[i]['url'].pop().encode('ascii', errors='ignore')
     file_name = url.split('/')[-1]
+    file_name = 'roms/' + file_name
     u = urllib2.urlopen(url)
     f = open(file_name, 'wb')
     meta = u.info()
