@@ -4,14 +4,14 @@ A simple web crawler based on `Scrapy`.
 
 Usage
 -------
-1. Install Scrapy
+1. install Scrapy
 ```
 $ apt-get install python-dev
 $ wget https://bootstrap.pypa.io/get-pip.py   
 $ python get-pip.py  #install pip
 $ pip install Scrapy
 ```
-2. Clone repo
+2. clone repo
 ```
 $ git clone http://github.com/Dongdongshe/romdownloader
 ```
