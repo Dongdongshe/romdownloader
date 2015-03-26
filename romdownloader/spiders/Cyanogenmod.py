@@ -9,23 +9,19 @@ from romdownloader.items import FileItem
 class CyanogenmodSpider(CrawlSpider):
     name = 'Cyanogenmod'
     allowed_domains = ['cyanogenmod.com']
-    start_urls = ['https://download.cyanogenmod.org/?device=&type=stable']
-
-    rules = (
-        Rule(LinkExtractor(allow_domains=('https://download.cyanogenmod.org')), callback='parse_item', follow=True),
-    )
+    start_urls = [
+        'https://download.cyanogenmod.org/?device=&type=stable',
+        'https://download.cyanogenmod.org/?type=snapshot',
+        'https://download.cyanogenmod.org/?type=nightly'
+        ]
 
     def parse(self, response):
         items=[]
-        urls = response.xpath('//tbody')
+        urls = response.xpath('//tbody/tr/td/a/@href').re(r'data.name=\s*(.*)\.zip')
         for url in urls:
+            print url
             item = FileItem()
-            item['url'] = url.xpath('tr/td/a/@href')
+            item['url'] = url
             items.append(item)
-            return items
 
-#        i = RomdownloaderItem()
-        #i['domain_id'] = response.xpath('//input[@id="sid"]/@value').extract()
-        #i['name'] = response.xpath('//div[@id="name"]').extract()
-        #i['description'] = response.xpath('//div[@id="description"]').extract()
-        return i
+        return items
