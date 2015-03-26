@@ -16,12 +16,8 @@ class CyanogenmodSpider(CrawlSpider):
         ]
 
     def parse(self, response):
-        items=[]
-        urls = response.xpath('//tbody/tr/td/a/@href').re(r'data.name=\s*(.*)\.zip')
+        urls = response.xpath('//tbody/tr/td/a/@href').re(r'data.url=http://get.cm/\s*(.*)\&data.name')
         for url in urls:
-            print url
             item = FileItem()
             item['url'] = url
-            items.append(item)
-
-        return items
+            yield item
