@@ -2,6 +2,12 @@ romdownloader
 =======
 A simple web crawler based on `Scrapy`.
 
+How to use
+--------
+1. clone repo, then cd to `romdownloader` dir
+2. run crawler to download rom urls to json file
+3. run download script to download roms to `roms` directo
+
 Install
 --------
 ```
@@ -10,11 +16,7 @@ $ wget https://bootstrap.pypa.io/get-pip.py
 $ python get-pip.py  #install pip
 $ pip install Scrapy
 ```
-Usage
---------
-1.clone repo, then cd to `romdownloader` dir
-2.run crawler to download rom urls to json file
-3.run download script to download roms to `roms` directory
+
 Example
 --------
 Clone repo
