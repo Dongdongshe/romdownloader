@@ -6,7 +6,7 @@ How to use
 --------
 1. clone repo, then cd to `romdownloader` dir
 2. run crawler to download rom urls to json file
-3. run download script to download roms to `roms` directo
+3. run download script to download roms to `roms` directory
 
 Install
 --------
