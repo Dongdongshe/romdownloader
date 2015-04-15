@@ -24,40 +24,9 @@ def download(url, file_name):
     
     f.close()
 
-# check if roms dir exists, else mkdir roms
-a=os.getcwd()+'/roms'
-if not os.path.exists(a):
-    os.makedirs(a)
-    
-for arg in sys.argv:
-    if arg == 'download.py':
-        continue
-
-    with open(arg) as data_file:    
-        data = json.load(data_file)
-
-    if arg == 'nexus.json':
-        for i in range(len(data)):
-            if not data[i]['url']:
-                continue
-        
-            url=data[i]['url'].pop().encode('ascii', errors='ignore')
-            file_name = url.split('/')[-1]
-            file_name = 'roms/' + file_name
-            download(url, file_name)
 
 
-    if arg == 'Cyanogenmod.json':
-        for i in range(len(data)):
-            if not data[i]['url']:
-                continue
-        
-            url=data[i]['url'].encode('ascii', errors='ignore')
-            url='http://download.cyanogenmod.org/'+url
-            print url
-            file_name = url.split('/')[-1]
-            file_name = 'roms/' + file_name
-            download(url, file_name)
+download(str(sys.argv[1]), "test")
 
 
     
