@@ -8,10 +8,10 @@ model=$(cat system/build.prop | grep "ro.product.model" | cut -d '=' -f2)
 target=1
 split_boot boot.img
 repack-zImage.sh -u boot/boot.img-kernel
-buildno=$(strings boot/boot.img-kernel_unpacked/piggy |grep "3\.[0-9]*\.[0-9]*"|tail -1)
+buildno=$(strings boot/boot.img-kernel_unpacked/piggy |grep "[23]\.[0-9]*\.[0-9]*"|tail -1)
 if [ "$buildno" == "" ]
 then 
-buildno=$(strings boot/boot.img-kernel_unpacked/piggy.gz+piggy_trailer|grep "3\.[0-9]*\.[0-9]*"|tail -1)
+buildno=$(strings boot/boot.img-kernel_unpacked/piggy.gz+piggy_trailer|grep "[23]\.[0-9]*\.[0-9]*"|tail -1)
 fi
 if [ "$buildno" == "" ]
 then
